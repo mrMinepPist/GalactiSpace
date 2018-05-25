@@ -1,0 +1,10 @@
+IDRegistry.genItemID("dutyHeavy1"); 
+Item.createItem("dutyHeavy1", "Heavy duty plate", {name: "dutyHeavy", meta: 1}, {});
+IDRegistry.genItemID("noseCone"); 
+Item.createItem("noseCone", "Nose cone", {name: "noseCone", meta: 1}, {});
+IDRegistry.genItemID("engine");
+Item.createItem("engine", "Rocket engine(Tier 1)", {name: "engine", meta: 1}, {});
+IDRegistry.genItemID("finsRocket");
+Item.createItem("finsRocket", "Rocket fins", {name: "finsRocket", meta: 1}, {});
+IDRegistry.genItemID("booster"); 
+Item.createItem("booster", "Booster", {name: "booster", meta: 1}, {});
