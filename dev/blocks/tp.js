@@ -1,3 +1,4 @@
+//Телепортер для творческого режима
 IDRegistry.genBlockID("dimTp");
 Block.createBlock("dimTp", [{name: "Planet teleporter(Creative ONLY)", texture: [["machine", 1]], inCreative: true, lightlevel: 15, explosionres: 225, destroytime: 510}]);
 var tpGui = new UI.StandartWindow({ 

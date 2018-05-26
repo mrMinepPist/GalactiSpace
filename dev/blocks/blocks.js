@@ -1,3 +1,4 @@
+//декоративные блоки
 IDRegistry.genBlockID("glassTin");
 Block.createBlock("glassTin", [{name: "Tin glass", texture: [["glassTin", 1]], inCreative: true}]);
 IDRegistry.genBlockID("glassClear");
