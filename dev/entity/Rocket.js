@@ -1,7 +1,7 @@
 IDRegistry.genItemID("RocketItem"); 
-Item.createItem("RocketItem", "Rocket", {name: "rocket_t1", meta: 1}, {});
+Item.createItem("RocketItem", Translation.translate("Rocket(tier 1)"), {name: "rocket_t1", meta: 1}, {});
 IDRegistry.genBlockID("Rocket");
-Block.createBlockWithRotation("Rocket", [{name: "Rocket", texture: [["machine", 1]],inCreative: false, destroytime: 21, explosionres: 25}]);
+Block.createBlockWithRotation("Rocket", [{name: Translation.translate("Rocket(tier 1)"), texture: [["machine", 1]],inCreative: false, destroytime: 21, explosionres: 25}]);
 var mesh = new RenderMesh();
 mesh.setBlockTexture("rocket_t1", 1);
 mesh.importFromFile(__dir__ + "images/models/rocket_t1.obj", "obj", null); 
@@ -23,7 +23,7 @@ var guiRocket = new UI.StandartWindow({
     standart: {
        	header: {
 			text: {
-				text: "Rocket"
+				text: Translation.translate("Rocket(tier 1)")
 			}
 		},
        	inventory: {
@@ -122,12 +122,11 @@ var tWind = new UI.Window({
         width: 48,
         height: 24
     },
-    drawing: [{
-		type: "text", text: "меню", x: 0, y: 0
-	}],
+    drawing: [],
     elements: {
         "btn": {
-        	type: "button", 
+        	type: "button",
+			text: "Меню",
 			x: 0, 
 			y: 0, 
 			bitmap: "button", 
@@ -151,6 +150,7 @@ var decreasePlayer = new UI.Window({
     elements: {
         "btn": {
         	type: "button", 
+			text: "Спешиться",
 			x: 0, 
 			y: 0, 
 			bitmap: "button", 
@@ -166,17 +166,6 @@ var decreasePlayer = new UI.Window({
                 }
             }
 		},
-		"txt": {
-			type: "text", 
-			text: "спешиться", 
-			x: 0, 
-			y: 0, 
-			font: {
-				color: android.graphics.Color.BLACK, 
-				shadow: .6, 
-				size: 10
-			}
-		}
 	}
 });
 var polet = new UI.Window({
@@ -189,11 +178,12 @@ var polet = new UI.Window({
     drawing: [],
     elements: {
         "btn": {
-        	type: "button", 
+        	type: "button",
 			x: 0, 
-			y: 0, 
-			bitmap: "button", 
-			scale: 60, 
+			y: 0,
+			bitmap: "button",
+			text: "полёт",
+			scale: 80, 
 			clicker: {
             	onClick: function () {
 					containerButt1.close();
@@ -230,17 +220,6 @@ var polet = new UI.Window({
                 }
             }
 		},
-		"txt": {
-			type: "text", 
-			text: "лететь", 
-			x: 1000 / 2 - 80, 
-			y: 350, 
-			font: {
-				color: android.graphics.Color.BLACK, 
-				shadow: .6, 
-				size: 10
-			}
-		}
 	}
 });
 TileEntity.registerPrototype(BlockID.Rocket, {
@@ -269,7 +248,7 @@ Callback.addCallback("ItemUse", function (coords, item, block) {
 		containerButt1.openAs(decreasePlayer);
 		containerButt2.openAs(tWind);
 		Entity.addEffect(Player.get(), Native.PotionEffect.movementSlowdown, 100000, 100000);
+		Player.setFlyingEnabled(true);
 		Player.setFlying(true);
-		Player.setFlyingEnabled(false);
 	}
  });
