@@ -1,7 +1,9 @@
+//регистрируем верстак
 IDRegistry.genItemID("workbenchRocketItem"); 
 Item.createItem("workbenchRocketItem", Translation.translate("ROSCOSMOS workbench"), {name: "workbenchRocket", meta: 1}, {});
 IDRegistry.genBlockID("workbenchRocket");
 Block.createBlockWithRotation("workbenchRocket", [{name: Translation.translate("ROSCOSMOS workbench"), texture: [["machine", 1]],inCreative: false, destroytime: 21, explosionres: 25}]);
+//текстура с моделью
 var mesh = new RenderMesh();
 mesh.setBlockTexture("machine", 0);
 mesh.importFromFile(__dir__ + "images/models/workbench.obj", "obj", null); 
@@ -9,10 +11,12 @@ var blockModel = new BlockRenderer.Model(mesh);
 var icRenderModel = new ICRender.Model();
 icRenderModel.addEntry(blockModel);
 BlockRenderer.setStaticICRender(BlockID.workbenchRocket, -1, icRenderModel);
+//Use функция
 Item.registerUseFunctionForID(ItemID.workbenchRocketItem, function(coords, item, block) { 
 	coords = coords.relative; 
 	World.setBlock(coords.x, coords.y, coords.z, BlockID.workbenchRocket, 0);
 });
+//GUI верстака
 var guiworkbench = new UI.StandartWindow({
     standart: {
        	header: {
@@ -163,7 +167,9 @@ var guiworkbench = new UI.StandartWindow({
 TileEntity.registerPrototype(BlockID.workbenchRocket, {
      defaultValues: {
      },
+	 //такт
      tick: function(){
+		 //рецепт
 		 if(this.container.getSlot("slotSource3").id == ItemID.dutyHeavy1 && 
 		 	this.container.getSlot("slotSource4").id == ItemID.dutyHeavy1 && 
 			this.container.getSlot("slotSource8").id == ItemID.dutyHeavy1 &&
@@ -198,6 +204,7 @@ TileEntity.registerPrototype(BlockID.workbenchRocket, {
      },
      click: function(id, count, data, coords){
      },
+	 //GUI
      getGuiScreen: function(){
           return guiworkbench; 
      }
